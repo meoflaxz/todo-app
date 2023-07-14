@@ -1,9 +1,8 @@
 import functions
 import PySimpleGUI as gui
 
-
 label = gui.Text("Type in a to-do")
-input_box = gui.InputText(tooltip="Enter todo")
+input_box = gui.InputText(tooltip="Enter todo", key="todo")
 add_button = gui.Button("Add")
 
 window = gui.Window('My To-Do App',
@@ -15,14 +14,11 @@ while True:
     match event:
         case "Add":
             todos = functions.get_todos()
-            print(todos)
+            print(values)
             new_todo = values['todo'] + "\n"
-            print(new_todo)
             todos.append(new_todo)
             functions.write_todos(todos)
         case gui.WIN_CLOSED:
             break
 
-
 window.close()
-
