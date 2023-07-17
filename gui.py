@@ -7,7 +7,7 @@ gui.theme("Black")
 clock = gui.Text('', key='clock')
 label = gui.Text("Type in a to-do")
 input_box = gui.InputText(tooltip="Enter todo", key="todo")
-add_button = gui.Button("Add")
+add_button = gui.Button("Add", size=10 )
 list_box = gui.Listbox(values=functions.get_todos(), key='todos',
                        enable_events=True, size=[45, 10])
 edit_button = gui.Button("Edit")
