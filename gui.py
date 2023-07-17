@@ -31,6 +31,8 @@ while True:
             todos[index] = new_todo
             functions.write_todos(todos)
             window['todos'].update(values=todos)
+        case 'todos':
+            window['todo'].update(values=values['todos'][0])
         case gui.WIN_CLOSED:
             break
 
