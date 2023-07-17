@@ -7,9 +7,14 @@ add_button = gui.Button("Add")
 list_box = gui.Listbox(values=functions.get_todos(), key='todos',
                        enable_events=True, size=[45, 10])
 edit_button = gui.Button("Edit")
+complete_button = gui.Button("Complete")
+exit_button = gui.Button("Exit")
 
 window = gui.Window('My To-Do App',
-                    layout=[[label], [input_box, add_button], [list_box, edit_button]],
+                    layout=[[label],
+                            [input_box, add_button],
+                            [list_box, edit_button],
+                            [exit_button]],
                     font=('Helvetica', 10))
 
 while True:
@@ -31,6 +36,15 @@ while True:
             todos[index] = new_todo
             functions.write_todos(todos)
             window['todos'].update(values=todos)
+        case 'Complete':
+            todo_to_complete = values['todos'][0]
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete)
+            functions.write_todos(todos)
+            window['todos'].update(values=todos)
+            window['todo'].update(values='')
+        case "Exit":
+            break
         case 'todos':
             window['todo'].update(values=values['todos'][0])
         case gui.WIN_CLOSED:
